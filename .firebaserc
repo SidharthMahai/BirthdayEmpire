@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "birthdayempire": {
+      "hosting": {
+        "birthdayempire": [
+          "birthdayempire"
+        ]
+      }
+    }
+  }
+}
