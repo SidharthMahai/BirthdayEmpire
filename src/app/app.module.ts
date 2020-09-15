@@ -13,6 +13,11 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './home/home.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SidebarComponent } from './navs/sidebar/sidebar.component';
+import { NavbarComponent } from './navs/navbar/navbar.component';
+import { AddComponent } from './birthdays/add/add.component';
+import { ViewComponent } from './birthdays/view/view.component';
 
 
 
@@ -24,7 +29,11 @@ import { HomeComponent } from './home/home.component';
     RegisterComponent,
     LoginComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    SidebarComponent,
+    NavbarComponent,
+    AddComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +44,8 @@ AngularFireAuthModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    NgbModule
 
 
   ],

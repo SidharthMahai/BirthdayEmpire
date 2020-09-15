@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+
+
+
 import {AuthService} from './user/auth.service';
 @Component({
   selector: 'app-root',

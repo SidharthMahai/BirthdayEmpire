@@ -1,0 +1,51 @@
+<br>
+<div class="container">
+
+
+<br>
+<h1>Save a Birthday!</h1>
+
+ <div class="form-group">
+ <label>Name of the person</label>
+    <input #_name="ngModel" required [class.is-invalid]="_name.invalid && _name.touched" type="text" class="form-control" [(ngModel)]="name">
+  </div>
+
+
+
+  <div class="form-group">
+ <label>Birth Date of the person</label> 
+   <div class="input-group">
+ <input #_date="ngModel" required [class.is-invalid]="_date.invalid && _date.touched" placeholder="yyyy-mm-dd"
+           name="d"  [(ngModel)]="birthday" ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1930, month: 1, day: 1}"
+                [maxDate]="{year: this.year, month: this.month+1, day: this.day+13}">
+
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+ <div class="form-group">
+    <label>Relation to you</label>
+    <select #_relation="ngModel" required [class.is-invalid]="_relation.invalid && _relation.touched" type="text" class="form-control" [(ngModel)]="relation" class="form-control" id="exampleFormControlSelect1">
+      <option>Friend</option>
+      <option>Mother</option>
+       <option>Father</option>
+      <option>Brother</option>
+      <option>Sister</option>
+      <option>Neighbor</option>
+       <option>Relative</option>
+        <option>Other</option>
+    </select>
+  </div>
+ 
+
+ 
+
+
+  <button type="submit" [disabled]=" _name.errors || _date.errors || _relation.errors" class="btn btn-primary" (click)="addBirthday()">Add</button>
+</div>                                                                                                                
+<router-outlet></router-outlet>
