@@ -34,9 +34,12 @@ addBirthday()
 {
 let record= {};
 record['name']=this.name;
-record['birthday']=this.birthday;
+record['day']=this.birthday.day;
+record['month']=this.birthday.month;
+record['year']=this.birthday.year;
 record['relation']=this.relation;
 record['id']=this.user.uid;
+record['date']= this.birthday.day + "/" + this.birthday.month + "/" + this.birthday.year;
 this.as.addBirthday(record);
 }
 

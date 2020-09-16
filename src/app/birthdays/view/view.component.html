@@ -1,1 +1,35 @@
-<p>view works!</p>
+<br><br>
+<div class="container">
+
+
+<h2>Viewing All Birthdays</h2>
+<br>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Sr No</th>
+    <th scope="col">Name</th>
+    <th scope="col">Relation</th>
+    <th scope="col">Birthday</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let b of birthdays; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+  
+      {{ b.name }}
+    </td>
+    <td>{{ b.relation }}</td>
+    <td>{{ b.date }}</td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+</div>
+
+
+<router-outlet></router-outlet>

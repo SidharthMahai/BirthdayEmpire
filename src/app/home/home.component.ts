@@ -1,3 +1,5 @@
+import { AngularFireAuth } from '@angular/fire/auth';
+import { auth } from 'firebase/app';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+   constructor(public auth: AngularFireAuth) { }
 
   ngOnInit(): void {
   }

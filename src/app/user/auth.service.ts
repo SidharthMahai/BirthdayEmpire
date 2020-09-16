@@ -40,7 +40,7 @@ async login(email: string, password: string) {
 
     var result = await this.afAuth.signInWithEmailAndPassword(email, password)
 alert("Login Successful");     
-this.router.navigate(['profile']);
+this.router.navigate(['viewbirthdays']);
    
 }
 
@@ -58,7 +58,7 @@ this.eventAuthError.next(error);
 })
 
 alert("Registration Successful");                                                                                    
-this.router.navigate(['profile']);
+this.router.navigate(['viewbirthdays']);
 
 }
 
@@ -78,7 +78,7 @@ this.router.navigate(['login']);
 
 async  loginWithGoogle(){
     await  this.afAuth.signInWithPopup(new auth.GoogleAuthProvider())
-    this.router.navigate(['profile']);
+    this.router.navigate(['viewbirthdays']);
 }
 
 

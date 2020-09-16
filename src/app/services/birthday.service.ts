@@ -3,6 +3,9 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import { Router } from  "@angular/router";
 
 
+
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,5 +20,14 @@ alert("Birthday Added Successfully");
 this.router.navigate(['viewbirthdays']);
 return this.fireservices.collection('Birthdays').add(Record);
 }
+
+
+getAllBirthdays(uid)
+{
+
+return this.fireservices.collection('Birthdays', ref => ref.where('id', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
+
+}
+
 
 }
