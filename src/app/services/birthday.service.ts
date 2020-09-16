@@ -41,7 +41,7 @@ this.fireservices.doc('Birthdays/' + Record.id).update(Record);
 getAllBirthdays(uid)
 {
 
-return this.fireservices.collection('Birthdays', ref => ref.where('id', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
 
 }
 
@@ -51,7 +51,7 @@ getTodayBirthdays(uid)
 {
 const d = new Date();
 
-return this.fireservices.collection('Birthdays', ref => ref.where('id', '==', uid).where('month', '==' , d.getMonth()+1).where('day', '==', d.getDate())).snapshotChanges();
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('month', '==' , d.getMonth()+1).where('day', '==', d.getDate())).snapshotChanges();
 
 }
 
