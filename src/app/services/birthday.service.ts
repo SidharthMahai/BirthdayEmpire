@@ -28,14 +28,21 @@ return this.fireservices.collection('Birthdays').add(Record);
 }
 
 
-updateBirthday(Record)
+updateBirthday(Record, docid)
 {
 alert("Birthday Updated Successfully");
 this.router.navigate(['viewbirthdays']);
-this.fireservices.doc('Birthdays/' + Record.id).update(Record);
+return this.fireservices.doc('Birthdays/' + docid).update(Record);
 
 }
 
+
+getBirthday(docid)
+{
+
+ return this.fireservices.doc('Birthdays/'+docid).valueChanges();
+
+}
 
 
 getAllBirthdays(uid)

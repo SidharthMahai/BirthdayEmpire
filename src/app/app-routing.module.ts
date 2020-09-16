@@ -7,6 +7,9 @@ import { ProfileComponent} from './user/profile/profile.component';
 import { AddComponent } from './birthdays/add/add.component';
 import {ViewComponent } from './birthdays/view/view.component';
 
+import {EditComponent } from './birthdays/edit/edit.component';
+
+
 import { LoginComponent} from './user/login/login.component';
 const routes: Routes = [
 {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -15,6 +18,7 @@ const routes: Routes = [
 {path : 'login', component: LoginComponent},
 {path : 'profile', component: ProfileComponent},
 {path : 'viewbirthdays', component: ViewComponent},
+{path : 'viewbirthdays/:id', component: EditComponent},
 {path : 'addbirthday', component: AddComponent}
 ];
 

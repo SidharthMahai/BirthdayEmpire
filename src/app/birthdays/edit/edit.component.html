@@ -1,1 +1,17 @@
-<p>edit works!</p>
+<br>
+<div class="container">
+
+
+<br>
+<h1>Editing Birthday!</h1>
+ <div class="form-group">
+ <label>Name of the person</label>
+    <input #_name="ngModel" required [class.is-invalid]="_name.invalid && _name.touched" type="text" class="form-control" [(ngModel)]="birthday.name">
+  </div>
+
+
+
+
+  <button type="submit" [disabled]=" _name.errors" class="btn btn-primary" (click)="updateBirthday()">Update</button>
+</div>                                                                                                               
+<router-outlet></router-outlet>

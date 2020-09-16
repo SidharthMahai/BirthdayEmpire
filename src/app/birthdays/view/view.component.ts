@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BirthdayService } from './../../services/birthday.service';
 import {AuthService } from './../../user/auth.service';
-
+import { Router } from '@angular/router';
 
 
 
@@ -15,7 +15,7 @@ export class ViewComponent implements OnInit {
 user: firebase.User;
 birthdays: any;
 
-  constructor(private as: BirthdayService, public as1: AuthService) { }
+  constructor(private router: Router, private as: BirthdayService, public as1: AuthService) { }
 
   ngOnInit(): void {
 this.as1.getUserState().subscribe( user => {
@@ -45,6 +45,13 @@ this.user=user;
 
 
 
+
+
+
+onSelect(birthday)
+{
+this.router.navigate(['/viewbirthdays',birthday.id]);
+}
 
 
 
