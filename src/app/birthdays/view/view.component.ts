@@ -27,7 +27,7 @@ this.user=user;
           id: e.payload.doc.id,
           name: e.payload.doc.data()['name'],
           relation: e.payload.doc.data()['relation'],
-          date: e.payload.doc.data()['date'],
+          date: this.as.formatDate(e.payload.doc.data()['day'],e.payload.doc.data()['month'],e.payload.doc.data()['year']),
       };
       })
     });

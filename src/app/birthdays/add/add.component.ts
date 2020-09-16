@@ -18,7 +18,7 @@ relation: string;
 now = new Date();
 year = this.now.getFullYear();
 month = this.now.getMonth();
-day = this.now.getDay();
+day = this.now.getDate();
 id: string;
 user: firebase.User;
   constructor(private as: BirthdayService, public as1: AuthService) { }

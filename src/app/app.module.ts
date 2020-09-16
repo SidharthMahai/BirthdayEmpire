@@ -19,6 +19,7 @@ import { NavbarComponent } from './navs/navbar/navbar.component';
 import { AddComponent } from './birthdays/add/add.component';
 import { ViewComponent } from './birthdays/view/view.component';
 import { ViewbymonthComponent } from './birthdays/view/viewbymonth/viewbymonth.component';
+import { TodaybirthdaysComponent } from './birthdays/view/todaybirthdays/todaybirthdays.component';
 
 
 
@@ -35,7 +36,8 @@ import { ViewbymonthComponent } from './birthdays/view/viewbymonth/viewbymonth.c
     NavbarComponent,
     AddComponent,
     ViewComponent,
-    ViewbymonthComponent
+    ViewbymonthComponent,
+    TodaybirthdaysComponent
   ],
   imports: [
     BrowserModule,

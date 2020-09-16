@@ -17,7 +17,7 @@
    <div class="input-group">
  <input #_date="ngModel" required [class.is-invalid]="_date.invalid && _date.touched" placeholder="yyyy-mm-dd"
            name="d"  [(ngModel)]="birthday" ngbDatepicker #d="ngbDatepicker" [minDate]="{year: 1930, month: 1, day: 1}"
-                [maxDate]="{year: this.year, month: this.month+1, day: this.day+13}">
+                [maxDate]="{year: this.year, month: this.month+1, day: this.day}">
 
       <div class="input-group-append">
         <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
