@@ -54,6 +54,10 @@ this.router.navigate(['/viewbirthdays',birthday.id]);
 }
 
 
+onDelete(birthday)                                                                                                                                                                                                 {
+this.as.deleteBirthday(birthday.id);
+}  
+
 
 
 }

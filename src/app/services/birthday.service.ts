@@ -30,11 +30,24 @@ return this.fireservices.collection('Birthdays').add(Record);
 
 updateBirthday(Record, docid)
 {
+if(window.confirm('Are sure you want to update this birthday ?')){
 alert("Birthday Updated Successfully");
 this.router.navigate(['viewbirthdays']);
 return this.fireservices.doc('Birthdays/' + docid).update(Record);
-
 }
+}
+
+
+deleteBirthday(docid)
+{
+if(window.confirm('Are sure you want to delete this birthday ?')){
+alert("Birthday Deleted Successfully");
+this.router.navigate(['viewbirthdays']);
+return this.fireservices.doc('Birthdays/' + docid).delete();
+}
+}
+
+
 
 
 getBirthday(docid)
