@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { Router } from  "@angular/router";
-
+import * as moment from 'moment';
 
 
 
@@ -25,6 +25,7 @@ addBirthday(Record)
 alert("Birthday Added Successfully");
 this.router.navigate(['viewbirthdays']);
 return this.fireservices.collection('Birthdays').add(Record);
+
 }
 
 
@@ -84,6 +85,17 @@ formatDate(d,m,y)
  var t = new Date(y,m-1,d);
 return d + ' ' + this.monthNames[t.getMonth()] + ', ' + y;
 
+}
+
+
+
+
+
+
+calculateAge(y,m,d)
+{
+let date: Date = new Date(y,m,d);
+return moment().diff(date, 'years');
 }
 
 

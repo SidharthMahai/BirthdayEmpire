@@ -28,6 +28,7 @@ this.user=user;
           name: e.payload.doc.data()['name'],
           relation: e.payload.doc.data()['relation'],
           date: this.as.formatDate(e.payload.doc.data()['day'],e.payload.doc.data()['month'],e.payload.doc.data()['year']),
+          age: this.as.calculateAge(e.payload.doc.data()['year'],e.payload.doc.data()['month'],e.payload.doc.data()['day']),
       };
       })
     });

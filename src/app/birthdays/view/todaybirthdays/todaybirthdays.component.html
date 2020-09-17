@@ -2,7 +2,7 @@
 <div class="container">
 
 
-<h2>Today Birthdays</h2>
+<h2>Birthdays Today</h2>
 <br>
 <table class="table table-striped">
   <thead>
@@ -10,18 +10,21 @@
     <th scope="col">Sr No</th>
     <th scope="col">Name</th>
     <th scope="col">Relation</th>
-    <th scope="col">Birthday</th>
-  </tr>
+    <th scope="col">Turnt</th>
+    		  
+</tr>
   </thead>
   <tbody>
-  <tr *ngFor="let b of birthdays; index as i">
+  <tr class="table-success" *ngFor="let b of birthdays; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
   
       {{ b.name }}
     </td>
     <td>{{ b.relation }}</td>
-    <td>{{ b.date }}</td>
+    <td>{{ b.age }}</td>
+
+    
   </tr>
   </tbody>
 </table>
