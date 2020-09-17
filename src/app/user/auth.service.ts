@@ -83,10 +83,12 @@ async  loginWithGoogle(){
 
 
 async logout(){
+if(window.confirm('Are sure you want to logout ?')){
     await this.afAuth.signOut();
     localStorage.removeItem('user');
     alert("Logout Successful"); 
     this.router.navigate(['']);
+}
 }
 
 
