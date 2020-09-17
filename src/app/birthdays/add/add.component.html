@@ -31,15 +31,9 @@
  <div class="form-group">
     <label>Relation to you</label>
     <select #_relation="ngModel" required [class.is-invalid]="_relation.invalid && _relation.touched" type="text" class="form-control" [(ngModel)]="relation" class="form-control" id="exampleFormControlSelect1">
-      <option>Friend</option>
-      <option>Mother</option>
-       <option>Father</option>
-      <option>Brother</option>
-      <option>Sister</option>
-      <option>Neighbor</option>
-       <option>Relative</option>
-        <option>Other</option>
-    </select>
+
+    <option *ngFor="let x of relations">{{x.relation}}</option>
+   </select>
   </div>
  
 

@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
+import { RelationService } from './../../services/relation.service';
 
 
 @Component({
@@ -17,20 +18,35 @@ import { Observable } from 'rxjs';
 
 export class EditComponent implements OnInit {
 id: string;
-name: string;
-relation: string;
-
 
 birthday:any;
-
-  constructor(private router: ActivatedRoute, private fs: AngularFirestore, private as: BirthdayService) { }
+relations: any;
+date: NgbDateStruct;
+now = new Date();
+year = this.now.getFullYear();
+month = this.now.getMonth();
+day = this.now.getDate();
+  constructor( private router: ActivatedRoute, private fs: AngularFirestore, private as: BirthdayService,  private rs: RelationService) { }
 
   ngOnInit(): void {
+
+this.rs.getAllRelations().subscribe(data => {
+
+this.relations = data.map(e => {
+return {
+relation: e.payload.doc.data()['relation'],
+
+};
+})
+});
+
+
 let docid = this.router.snapshot.paramMap.get('id');
 this.id = docid;
 this.as.getBirthday(docid).subscribe(data => {
 
       this.birthday = data;
+ this.date= { year: this.birthday.year, month: this.birthday.month, day: this.birthday.day }
 
     });
 
@@ -47,10 +63,10 @@ updateBirthday()
 {
 let record = { };
 record['name']=this.birthday.name;
-//record['day']=this.day;
-//record['month']=this.month;
-//record['year']=this.year;
-//record['relation']=this.relation;
+record['day']=this.date.day;
+record['month']=this.date.month;
+record['year']=this.date.year;
+record['relation']=this.birthday.relation;
 this.as.updateBirthday(record, this.id);
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { BirthdayService } from './../../services/birthday.service';
+import { RelationService } from './../../services/relation.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService } from './../../user/auth.service';
 
@@ -21,10 +22,24 @@ month = this.now.getMonth();
 day = this.now.getDate();
 id: string;
 user: firebase.User;
-  constructor(private as: BirthdayService, public as1: AuthService) { }
+relations: any;
+  constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService) { }
 
   ngOnInit(): void {
   
+this.rs.getAllRelations().subscribe( data => {
+this.relations = data.map(e => {
+        return {
+
+relation: e.payload.doc.data()['relation'],
+
+};
+})
+});
+
+
+
+
 this.as1.getUserState().subscribe( user => {
 this.user=user;
 })
