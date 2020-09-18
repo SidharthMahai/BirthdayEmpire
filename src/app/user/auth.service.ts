@@ -37,11 +37,9 @@ this.afAuth.authState.subscribe(user => {
 
 
 async login(email: string, password: string) {
-
     var result = await this.afAuth.signInWithEmailAndPassword(email, password)
 alert("Login Successful");     
-this.router.navigate(['viewbirthdays']);
-   
+this.router.navigate(['viewbirthdays']);   
 }
 
 

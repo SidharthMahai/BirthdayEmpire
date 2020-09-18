@@ -58,4 +58,19 @@ this.as.addBirthday(record);
 }
 
 
+
+
+resetValues()
+{
+this.name="";
+this.birthday.day=0;
+this.birthday.month=0;
+this.birthday.year=0;
+this.relation="";
+}
+
+
+
+
+
 }
