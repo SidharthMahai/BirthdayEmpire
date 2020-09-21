@@ -68,6 +68,11 @@ return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', u
 
 
 
+
+
+
+
+
 getTodayBirthdays(uid)
 {
 const d = new Date();
