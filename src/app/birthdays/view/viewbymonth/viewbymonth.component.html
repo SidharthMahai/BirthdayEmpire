@@ -1,1 +1,65 @@
-<p>viewbymonth works!</p>
+<br>
+<div class="container">
+
+
+<br>
+<h2>View by Month</h2>
+<options></options>
+<br>
+<br>
+
+
+ <div class="form-group">
+       <select #_month="ngModel" (click)="getBirthdays()" required [class.is-invalid]="_month.invalid && _month.touched" type="text" [(ngModel)]="month" class="form-control form-row col-5" id="exampleFormControlSelect1">
+
+<option>January</option>
+<option>February</option>
+<option>March</option>
+<option>April</option>
+<option>May</option>
+<option>June</option>
+<option>July</option>
+<option>August</option>
+<option>September</option>
+<option>October</option>
+<option>November</option>
+<option>December</option>
+   </select>
+  </div>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th scope="col">Sr No</th>
+    <th scope="col">Name</th>
+    <th scope="col">Relation</th>
+    <th scope="col">Birthday</th>
+    <th scope="col">Age</th>
+    <th scope="col">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr  [ngClass]="{'table-success' : b.birthdaytoday}"   *ngFor="let b of birthdays; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+  
+      {{ b.name }}
+    </td>
+    <td>{{ b.relation }}</td>
+    <td>{{ b.date }}</td>
+     <td>{{ b.age }}</td>
+    <td><span (click)="onSelect(b)" class="badge badge-primary">Edit</span>&nbsp;<span (click)="onDelete(b)" class="badge badge-danger">Delete</span></td>
+  </tr>
+  </tbody>
+</table>
+
+
+
+
+
+
+
+</div> 
+
+
+<router-outlet></router-outlet>

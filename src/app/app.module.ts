@@ -22,6 +22,7 @@ import { ViewbymonthComponent } from './birthdays/view/viewbymonth/viewbymonth.c
 import { TodaybirthdaysComponent } from './birthdays/view/todaybirthdays/todaybirthdays.component';
 import { EditComponent } from './birthdays/edit/edit.component';
 import { DeleteComponent } from './birthdays/delete/delete.component';
+import { OptionsComponent } from './birthdays/view/options/options.component';
 
 
 
@@ -41,7 +42,8 @@ import { DeleteComponent } from './birthdays/delete/delete.component';
     ViewbymonthComponent,
     TodaybirthdaysComponent,
     EditComponent,
-    DeleteComponent
+    DeleteComponent,
+    OptionsComponent
   ],
   imports: [
     BrowserModule,

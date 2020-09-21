@@ -68,6 +68,17 @@ return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', u
 
 
 
+getBirthdaysByMonth(uid,monthno)
+{
+
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('month', '==', monthno).orderBy('day')).snapshotChanges();
+
+}
+
+
+
+
+
 
 birthdayToday(m,d)
 {
