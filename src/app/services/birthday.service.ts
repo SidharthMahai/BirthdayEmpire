@@ -69,7 +69,23 @@ return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', u
 
 
 
+birthdayToday(m,d)
+{
+var date = new Date();
+var day =date.getDate();
+var month = date.getMonth()+1;
 
+if( m==month && d==day)
+{
+return true;
+}
+else
+{
+return false;
+}
+
+
+}
 
 
 
