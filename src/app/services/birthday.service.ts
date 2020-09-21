@@ -94,8 +94,42 @@ return d + ' ' + this.monthNames[t.getMonth()] + ', ' + y;
 
 calculateAge(y,m,d)
 {
-let date: Date = new Date(y,m,d);
-return moment().diff(date, 'years');
+var birth_date = new Date(y,m,d);
+var birth_date_day = birth_date.getDate();
+var birth_date_month = birth_date.getMonth()
+var birth_date_year = birth_date.getFullYear();
+var today_date = new Date();
+var today_day = today_date.getDate();
+var today_month = today_date.getMonth()+1;
+var today_year = today_date.getFullYear();
+
+
+if (today_month > birth_date_month) 
+{
+return today_year - birth_date_year;
+}
+
+
+else if (today_month == birth_date_month)
+ {
+if (today_day >= birth_date_day)
+{
+ return today_year - birth_date_year;
+}         
+   else
+{
+ return today_year - birth_date_year - 1;
+}
+
+}
+
+
+else 
+{
+return today_year - birth_date_year - 1;
+}
+
+
 }
 
 
