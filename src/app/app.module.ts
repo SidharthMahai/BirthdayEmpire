@@ -24,6 +24,7 @@ import { EditComponent } from './birthdays/edit/edit.component';
 import { DeleteComponent } from './birthdays/delete/delete.component';
 import { OptionsComponent } from './birthdays/view/options/options.component';
 import { ViewbynameComponent } from './birthdays/view/viewbyname/viewbyname.component';
+import { ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyrelation.component';
 
 
 
@@ -45,7 +46,8 @@ import { ViewbynameComponent } from './birthdays/view/viewbyname/viewbyname.comp
     EditComponent,
     DeleteComponent,
     OptionsComponent,
-    ViewbynameComponent
+    ViewbynameComponent,
+    ViewbyrelationComponent
   ],
   imports: [
     BrowserModule,

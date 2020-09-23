@@ -29,7 +29,7 @@
 
  <div class="form-group">
     <label>Relation to you</label>
-    <select #_relation="ngModel" required [class.is-invalid]="_relation.invalid && _relation.touched" type="text" class="form-control" [(ngModel)]="birthday.relation" class="form-control" id="exampleFormControlSelect1">
+    <select #_relation="ngModel" required [class.is-invalid]="_relation.invalid && _relation.touched" type="text" class="form-control" [(ngModel)]="birthday.relation" class="form-control form-row col-5" id="exampleFormControlSelect1">
 
     <option *ngFor="let x of relations">{{x.relation}}</option>
    </select>

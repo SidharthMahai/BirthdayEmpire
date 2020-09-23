@@ -10,7 +10,7 @@ import {ViewbymonthComponent } from './birthdays/view/viewbymonth/viewbymonth.co
 import {EditComponent } from './birthdays/edit/edit.component';
 import { LoginComponent} from './user/login/login.component';
 import {TodaybirthdaysComponent } from './birthdays/view/todaybirthdays/todaybirthdays.component';
-
+import {ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyrelation.component';
 
 const routes: Routes = [
 {path: '', redirectTo: '/about', pathMatch: 'full'},
@@ -22,6 +22,7 @@ const routes: Routes = [
 {path : 'viewbirthdays/:id', component: EditComponent},
 {path : 'viewbymonth',component: ViewbymonthComponent },
 {path : 'viewbyname',component: ViewbynameComponent },
+{path : 'viewbyrelation',component: ViewbyrelationComponent },
 {path : 'todaybirthdays',component: TodaybirthdaysComponent },
 {path : 'addbirthday', component: AddComponent}
 ];

@@ -75,7 +75,17 @@ return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', u
 
 }
 
-
+getBirthdaysByRelation(uid,relation)
+{
+if(relation == "")
+{
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
+}
+else
+{
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('relation', '==', relation).orderBy('month').orderBy('day')).snapshotChanges();
+}
+}
 
 getBirthdaysByName(uid,name)
 {
