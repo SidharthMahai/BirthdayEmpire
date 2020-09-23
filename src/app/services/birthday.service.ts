@@ -77,6 +77,19 @@ return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', u
 
 
 
+getBirthdaysByName(uid,name)
+{
+if(name == "")
+{
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
+}
+else
+{
+name = name.toLowerCase();
+return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('name').startAt(name).endAt(name + '\uf8ff')).snapshotChanges();
+}
+}
+
 
 
 

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import {ViewbynameComponent } from './birthdays/view/viewbyname/viewbyname.component';
 import { RegisterComponent} from './user/register/register.component';
 import { HomeComponent} from './home/home.component';
 import { ProfileComponent} from './user/profile/profile.component';
@@ -21,6 +21,7 @@ const routes: Routes = [
 {path : 'viewbirthdays', component: ViewComponent},
 {path : 'viewbirthdays/:id', component: EditComponent},
 {path : 'viewbymonth',component: ViewbymonthComponent },
+{path : 'viewbyname',component: ViewbynameComponent },
 {path : 'todaybirthdays',component: TodaybirthdaysComponent },
 {path : 'addbirthday', component: AddComponent}
 ];

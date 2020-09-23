@@ -48,7 +48,7 @@ this.user=user;
 addBirthday()
 {
 let record= {};
-record['name']=this.name;
+record['name']=this.name.toLowerCase();
 record['day']=this.birthday.day;
 record['month']=this.birthday.month;
 record['year']=this.birthday.year;

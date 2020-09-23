@@ -1,11 +1,18 @@
-<br><br>
+<br>
 <div class="container">
 
 
-<h2>Viewing All Birthdays</h2>
+<br>
+<h2>View by Name</h2>
 <options></options>
 <br>
 <br>
+
+ <div class="form-group">
+ <label>Name of the person</label>
+    <input #_name="ngModel" required [class.is-invalid]="_name.invalid && _name.touched"  (keyup)="getBirthdays()" type="text" class="form-control" [(ngModel)]="name">
+  </div>
+
 <table class="table table-striped">
   <thead>
   <tr>
@@ -35,7 +42,10 @@
 
 
 
-</div>
+
+
+
+</div> 
 
 
 <router-outlet></router-outlet>

@@ -23,6 +23,7 @@ import { TodaybirthdaysComponent } from './birthdays/view/todaybirthdays/todaybi
 import { EditComponent } from './birthdays/edit/edit.component';
 import { DeleteComponent } from './birthdays/delete/delete.component';
 import { OptionsComponent } from './birthdays/view/options/options.component';
+import { ViewbynameComponent } from './birthdays/view/viewbyname/viewbyname.component';
 
 
 
@@ -43,7 +44,8 @@ import { OptionsComponent } from './birthdays/view/options/options.component';
     TodaybirthdaysComponent,
     EditComponent,
     DeleteComponent,
-    OptionsComponent
+    OptionsComponent,
+    ViewbynameComponent
   ],
   imports: [
     BrowserModule,
