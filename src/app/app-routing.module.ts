@@ -13,9 +13,9 @@ import {TodaybirthdaysComponent } from './birthdays/view/todaybirthdays/todaybir
 
 
 const routes: Routes = [
-{path: '', redirectTo: '/home', pathMatch: 'full'},
+{path: '', redirectTo: '/about', pathMatch: 'full'},
 {path : 'register', component: RegisterComponent},
-{path : 'home', component: HomeComponent},
+{path : 'about', component: HomeComponent},
 {path : 'login', component: LoginComponent},
 {path : 'profile', component: ProfileComponent},
 {path : 'viewbirthdays', component: ViewComponent},

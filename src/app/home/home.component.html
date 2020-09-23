@@ -1,15 +1,5 @@
 
 
-<div *ngIf="auth.user | async as user; else showLogin">
-      <todaybirthdays></todaybirthdays>
-    </div>
-    <ng-template #showLogin>
-  
-
-
-
-
-
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
  <div class="jumbotron">
       <main role="main" class="inner cover">
@@ -27,4 +17,4 @@
       </footer>
     </div>
 </div>
-</ng-template>
+<router-outlet></router-outlet>

@@ -39,7 +39,7 @@ this.afAuth.authState.subscribe(user => {
 async login(email: string, password: string) {
     var result = await this.afAuth.signInWithEmailAndPassword(email, password)
 alert("Login Successful");     
-this.router.navigate(['viewbirthdays']);   
+this.router.navigate(['todaybirthdays']);   
 }
 
 
@@ -56,7 +56,7 @@ this.eventAuthError.next(error);
 })
 
 alert("Registration Successful");                                                                                    
-this.router.navigate(['viewbirthdays']);
+this.router.navigate(['todaybirthdays']);
 
 }
 
@@ -76,7 +76,7 @@ this.router.navigate(['login']);
 
 async  loginWithGoogle(){
     await  this.afAuth.signInWithPopup(new auth.GoogleAuthProvider())
-    this.router.navigate(['viewbirthdays']);
+    this.router.navigate(['todaybirthdays']);
 }
 
 
@@ -85,7 +85,7 @@ if(window.confirm('Are sure you want to logout ?')){
     await this.afAuth.signOut();
     localStorage.removeItem('user');
     alert("Logout Successful"); 
-    this.router.navigate(['']);
+    this.router.navigate(['home']);
 }
 }
 

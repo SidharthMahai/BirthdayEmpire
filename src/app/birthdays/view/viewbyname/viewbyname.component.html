@@ -10,7 +10,7 @@
 
  <div class="form-group">
  <label>Name of the person</label>
-    <input #_name="ngModel" required [class.is-invalid]="_name.invalid && _name.touched"  (keyup)="getBirthdays()" type="text" class="form-control" [(ngModel)]="name">
+    <input required  (keyup)="getBirthdays()" type="text" class="form-control" [(ngModel)]="name">
   </div>
 
 <table class="table table-striped">
