@@ -12,7 +12,7 @@
     <input #_pwd="ngModel" required [class.is-invalid]="_pwd.invalid && _pwd.touched" class="form-control" type="password" [(ngModel)]="password">
   </div>
 
-  <button type="submit" [disabled]="_email.errors || _pwd.errors" class="btn" (click)="loginUser()">Login</button>
+  <button type="submit" [disabled]="_email.errors || _pwd.errors" class="btn btn-dark" (click)="loginUser()">Login</button>
  &nbsp;&nbsp;<button type="submit" class="btn btn-success" (click)="googleSignIn()">Sign in with Google</button>
 &nbsp;&nbsp;<button type="submit" class="btn btn-primary" (click)="facebookSignIn()">Sign in with Facebook</button>
 </div>
