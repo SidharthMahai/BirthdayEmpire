@@ -80,6 +80,15 @@ async  loginWithGoogle(){
 }
 
 
+
+async loginWithFacebook() {
+   await this.afAuth.signInWithPopup(new auth.FacebookAuthProvider())
+this.router.navigate(['todaybirthdays']);
+  }  
+
+
+
+
 async logout(){
 if(window.confirm('Are sure you want to logout ?')){
     await this.afAuth.signOut();

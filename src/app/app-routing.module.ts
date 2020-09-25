@@ -12,6 +12,7 @@ import { LoginComponent} from './user/login/login.component';
 import {TodaybirthdaysComponent } from './birthdays/view/todaybirthdays/todaybirthdays.component';
 import {ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyrelation.component';
 
+
 const routes: Routes = [
 {path: '', redirectTo: '/about', pathMatch: 'full'},
 {path : 'register', component: RegisterComponent},

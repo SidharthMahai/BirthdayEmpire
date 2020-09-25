@@ -47,7 +47,7 @@ import { ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyr
     DeleteComponent,
     OptionsComponent,
     ViewbynameComponent,
-    ViewbyrelationComponent
+    ViewbyrelationComponent,
   ],
   imports: [
     BrowserModule,

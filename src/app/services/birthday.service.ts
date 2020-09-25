@@ -70,14 +70,16 @@ return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', u
 
 getBirthdaysByMonth(uid,monthno)
 {
-
 return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('month', '==', monthno).orderBy('day')).snapshotChanges();
-
 }
+
+
+
+
 
 getBirthdaysByRelation(uid,relation)
 {
-if(relation == "")
+if(relation == "Choose Relation")
 {
 return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
 }

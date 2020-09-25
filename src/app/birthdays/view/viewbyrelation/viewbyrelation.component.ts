@@ -34,7 +34,7 @@ relation: e.payload.doc.data()['relation'],
 
 this.as1.getUserState().subscribe( user => {
 this.user=user;
-this.relation="";
+this.relation="Choose Relation";
 this.getBirthdays();
 })
 

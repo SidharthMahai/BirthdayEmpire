@@ -11,7 +11,8 @@
  <div class="form-group">
     <label>Relation to you</label>
     <select type="text" (click)="getBirthdays()" class="form-control" [(ngModel)]="relation" class="form-control form-row col-5" id="exampleFormControlSelect1">
-    <option *ngFor="let x of relations">{{x.relation}}</option>
+<option>Choose Relation</option>    
+<option *ngFor="let x of relations">{{x.relation}}</option>
    </select>
   </div>
 

@@ -26,5 +26,12 @@ googleSignIn()
 this.authService.loginWithGoogle();
 }
 
+
+facebookSignIn()
+{
+this.authService.loginWithFacebook();
+}
+
+
 }
 
