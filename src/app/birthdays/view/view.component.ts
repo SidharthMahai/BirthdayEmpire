@@ -24,11 +24,16 @@ this.user=user;
  this.as.getAllBirthdays(this.user.uid).subscribe(data => {
 this.birthdays = data;
 this.loading = false;
+if(data[0].error) {
+  this.birthdays = null;
+}
+else {
 this.birthdays.forEach(birthday => {
   birthday.date = this.as.formatDate(birthday.day,birthday.month,birthday.year);
   birthday.birthdaytoday = this.as.birthdayToday(birthday.month, birthday.day);
   birthday.age = this.as.calculateAge(birthday.year,birthday.month,birthday.day);
 });
+}
     });
 
 

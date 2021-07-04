@@ -16,7 +16,7 @@ export class TodaybirthdaysComponent implements OnInit {
 user: any;
 birthdays: any;
 date: any;
-
+loading: boolean = true;
 now = new Date();
 curyear = this.now.getFullYear();
 
@@ -29,15 +29,18 @@ this.as1.getUserState().subscribe( user => {
 this.user=user;
  this.as.getTodayBirthdays(this.user.uid).subscribe(data => {
 
-      this.birthdays = data.map(e => {
-        return {
-          id: e.payload.doc.id,
-          name: e.payload.doc.data()['name'],
-          relation: e.payload.doc.data()['relation'],
-           date: this.as.formatDate(e.payload.doc.data()['day'],e.payload.doc.data()['month'],e.payload.doc.data()['year']),
-           age: this.curyear - e.payload.doc.data()['year'],
-      };
+      this.birthdays = data;
+      this.loading = false;
+      if(data[0].error) {
+        this.birthdays = null;
+      }
+      else {
+      this.birthdays.forEach(birthday => {
+  birthday.date = this.as.formatDate(birthday.day,birthday.month,birthday.year);
+  birthday.birthdaytoday = this.as.birthdayToday(birthday.month, birthday.day);
+  birthday.age = this.as.calculateAge(birthday.year,birthday.month,birthday.day);
       })
+    }
     });
 
 

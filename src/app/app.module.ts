@@ -1,3 +1,4 @@
+import { NotfoundComponent } from './birthdays/notfound/notfound.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -58,7 +59,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     ViewbynameComponent,
     ViewbyrelationComponent,
       AboutComponent,
-      LoaderComponent
+      LoaderComponent,
+      NotfoundComponent
    ],
   imports: [
     BrowserModule,

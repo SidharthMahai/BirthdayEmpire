@@ -13,7 +13,7 @@ export class ViewbymonthComponent implements OnInit {
 month:any;
 user: any;
 birthdays: any;
-
+loading: boolean = true;
 date = new Date();
 monthno:any;
 
@@ -26,25 +26,34 @@ this.as1.getUserState().subscribe( user => {
 this.user=user;
 this.monthno = this.date.getMonth();
 this.month = moment.months(this.monthno);
-                                          
 this.getBirthdays();
-
 })
-
-
 
 
   }
 
 
 
-getBirthdays()
-{
-this.as.getBirthdaysByMonth(this.user.uid, parseInt(moment().month(this.month).format("M"))).subscribe(data => {
-                                                                                                                                                                                                                         this.birthdays = data.map(e => {                                                                                                                                                                                     return {                                                                                                                                                                                                             id: e.payload.doc.id,                                                                                                                                                                                              name: e.payload.doc.data()['name'],                                                                                                                                                                                relation: e.payload.doc.data()['relation'],                                                                                                                                                                        date: this.as.formatDate(e.payload.doc.data()['day'],e.payload.doc.data()['month'],e.payload.doc.data()['year']),                                                                                                  birthdaytoday: this.as.birthdayToday(e.payload.doc.data()['month'],e.payload.doc.data()['day']),                                                                                                                   age: this.as.calculateAge(e.payload.doc.data()['year'],e.payload.doc.data()['month'],e.payload.doc.data()['day']),                                                                                             };                                                                                                                                                                                                                 })                                                                                                                                                                                                              
- });
-}
+  getBirthdays()
+  {
+  this.loading = true;
+  this.as.getBirthdaysByMonth(this.user.uid, parseInt(moment().month(this.month).format("M"))).subscribe(data => {
+    this.birthdays = data;
+    this.loading = false;
 
+    if(data[0].error) {
+      this.birthdays = null;
+    }
+    else {
+    this.birthdays.forEach(birthday => {
+birthday.date = this.as.formatDate(birthday.day,birthday.month,birthday.year);
+birthday.birthdaytoday = this.as.birthdayToday(birthday.month, birthday.day);
+birthday.age = this.as.calculateAge(birthday.year,birthday.month,birthday.day);
+    });
+  }                                                                                                                                                                                                  
+   });
+  }
+  
 
 
 

@@ -1,8 +1,7 @@
 <br>
-<div class="container">
-
-
 <br>
+<div class="container">
+ <notfound *ngIf="!loading && !birthdays"></notfound>
 <h2>View by Month</h2>
 <options></options>
 <br>
@@ -10,7 +9,7 @@
 
 
  <div class="form-group">
-       <select #_month="ngModel" (click)="getBirthdays()" required [class.is-invalid]="_month.invalid && _month.touched" type="text" [(ngModel)]="month" class="form-control form-row col-5" id="exampleFormControlSelect1">
+       <select #_month="ngModel" (change)="getBirthdays()" required [class.is-invalid]="_month.invalid && _month.touched" type="text" [(ngModel)]="month" class="form-control form-row col-5" id="exampleFormControlSelect1">
 
 <option>January</option>
 <option>February</option>
@@ -38,7 +37,7 @@
     <th scope="col">Actions</th>
   </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="!loading && this.birthdays">
   <tr  [ngClass]="{'table-success' : b.birthdaytoday}"   *ngFor="let b of birthdays; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
@@ -51,6 +50,7 @@
     <td><span (click)="onSelect(b)" class="badge badge-primary">Edit</span>&nbsp;<span (click)="onDelete(b)" class="badge badge-danger">Delete</span></td>
   </tr>
   </tbody>
+  <loader *ngIf="loading"></loader>
 </table>
 
 

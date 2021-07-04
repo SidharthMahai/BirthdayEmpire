@@ -12,7 +12,7 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class BirthdayService {
-url: string;
+url: string = "https://script.google.com/macros/s/AKfycbzZkqsYH1UH4dO9XRQt22_JhWq7dK69g8G_Lao4PZfSorZiLiurDaOAx1J0ATG1XpDi/exec";
   constructor(public fireservices: AngularFirestore, public  router:  Router, private http:HttpClient) { 
     
   }
@@ -64,18 +64,13 @@ getBirthday(docid)
 
 getAllBirthdays(uid)
 {
- return this.http.get<any>("https://script.google.com/macros/s/AKfycbyDP7uKa3ocJgVQvwqdtvdkaKq7LjL1AsCLbE_OK5ESuZdZZhAv_9-TLiZ0UjmLnAo/exec?action=getAllBirthdays&uid="+uid);
+ return this.http.get<any>(this.url+"?action=getAllBirthdays&uid="+uid);
 }
-
-getLatestUrl() {
-  return this.http.get<any>('https://script.google.com/macros/s/AKfycbzuwB2_iF_XCyybklKaabtzWwmvdDstRDuxiEtJ60TYpPhF8pyTnQOL4Pj-pb4kHzM4/exec?action=getApiUrl&name=birthdayempire');
-}  
-
 
 
 getBirthdaysByMonth(uid,monthno)
 {
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('month', '==', monthno).orderBy('day')).snapshotChanges();
+  return this.http.get<any>(this.url+"?action=getBirthdaysByMonth&uid="+uid+"&month="+monthno);
 }
 
 
@@ -132,7 +127,7 @@ return false;
 
 getTodayBirthdays(uid)
 {
-  return this.http.get<any>("https://script.google.com/macros/s/AKfycbyDP7uKa3ocJgVQvwqdtvdkaKq7LjL1AsCLbE_OK5ESuZdZZhAv_9-TLiZ0UjmLnAo/exec?action=getTodayBirthdays&uid="+uid);
+  return this.http.get<any>(this.url+"?action=getTodayBirthdays&uid="+uid);
 }
 
 

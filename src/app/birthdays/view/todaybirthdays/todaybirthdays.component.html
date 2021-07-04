@@ -1,7 +1,7 @@
 <br><br>
 <div class="container">
 
-
+  <notfound *ngIf="!loading && !birthdays"></notfound>
 <h2>Birthdays Today&nbsp;&nbsp;( {{date}} )</h2>
  <options></options>
 <br>
@@ -16,7 +16,7 @@
     		  
 </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="!loading">
   <tr class="table-success" *ngFor="let b of birthdays; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
@@ -29,6 +29,7 @@
     
   </tr>
   </tbody>
+  <loader *ngIf="loading"></loader>
 </table>
 
 
