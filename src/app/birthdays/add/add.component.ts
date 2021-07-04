@@ -24,18 +24,13 @@ id: string;
 user: any;
 relations: any;
   constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService) { }
-
+url: string;
   ngOnInit(): void {
-  
+
 this.rs.getAllRelations().subscribe( data => {
-this.relations = data.map(e => {
-        return {
-
-relation: e.payload.doc.data()['relation'],
-
-};
-})
-});
+this.relations = data;
+},
+err => console.error(err));
 
 
 

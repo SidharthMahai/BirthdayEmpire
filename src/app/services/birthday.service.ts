@@ -62,19 +62,14 @@ getBirthday(docid)
 }
 
 
-getAllBirthdays(uid): any
+getAllBirthdays(uid)
 {
- return this.http.get<any>("https://script.google.com/macros/s/AKfycbx2kxLzg-6-p_eeoqbkjIvRieZfvRQ6MeRrKLdzB18zBMpYYX3Rc9y3fTgmkNwAv-G3/exec?action=getAllBirthdays&uid="+uid);
+ return this.http.get<any>("https://script.google.com/macros/s/AKfycbyDP7uKa3ocJgVQvwqdtvdkaKq7LjL1AsCLbE_OK5ESuZdZZhAv_9-TLiZ0UjmLnAo/exec?action=getAllBirthdays&uid="+uid);
 }
 
-fetchUrl()
-{
-  this.http.get<any>('https://script.google.com/macros/s/AKfycbzuwB2_iF_XCyybklKaabtzWwmvdDstRDuxiEtJ60TYpPhF8pyTnQOL4Pj-pb4kHzM4/exec?action=getApiUrl&name=birthdayempire').subscribe(Data=>{
-    this.url = Data[0].url;
-    console.log(this.url);
-  });
-  return this.url;
-}
+getLatestUrl() {
+  return this.http.get<any>('https://script.google.com/macros/s/AKfycbzuwB2_iF_XCyybklKaabtzWwmvdDstRDuxiEtJ60TYpPhF8pyTnQOL4Pj-pb4kHzM4/exec?action=getApiUrl&name=birthdayempire');
+}  
 
 
 
@@ -137,10 +132,7 @@ return false;
 
 getTodayBirthdays(uid)
 {
-const d = new Date();
-
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('month', '==' , d.getMonth()+1).where('day', '==', d.getDate())).snapshotChanges();
-
+  return this.http.get<any>("https://script.google.com/macros/s/AKfycbyDP7uKa3ocJgVQvwqdtvdkaKq7LjL1AsCLbE_OK5ESuZdZZhAv_9-TLiZ0UjmLnAo/exec?action=getTodayBirthdays&uid="+uid);
 }
 
 

@@ -22,6 +22,7 @@ import {AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular
 import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
 import {environment} from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
+import { LoaderComponent } from './loader/loader.component';
 
 const firebaseUiAuthConfig: firebaseui.auth.Config = {
   signInFlow: 'popup',
@@ -42,7 +43,7 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
 
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     LoginComponent,
     ProfileComponent,
@@ -56,7 +57,8 @@ const firebaseUiAuthConfig: firebaseui.auth.Config = {
     OptionsComponent,
     ViewbynameComponent,
     ViewbyrelationComponent,
-      AboutComponent
+      AboutComponent,
+      LoaderComponent
    ],
   imports: [
     BrowserModule,

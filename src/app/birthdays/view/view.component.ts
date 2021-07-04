@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class ViewComponent implements OnInit {
 user: any;
 birthdays: any;
+loading: boolean = true;
 
   constructor(private router: Router, private as: BirthdayService, public as1: AuthService) { }
 
@@ -21,7 +22,13 @@ birthdays: any;
 this.as1.getUserState().subscribe( user => {
 this.user=user;
  this.as.getAllBirthdays(this.user.uid).subscribe(data => {
-console.log(data);
+this.birthdays = data;
+this.loading = false;
+this.birthdays.forEach(birthday => {
+  birthday.date = this.as.formatDate(birthday.day,birthday.month,birthday.year);
+  birthday.birthdaytoday = this.as.birthdayToday(birthday.month, birthday.day);
+  birthday.age = this.as.calculateAge(birthday.year,birthday.month,birthday.day);
+});
     });
 
 
