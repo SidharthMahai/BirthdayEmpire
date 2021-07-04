@@ -1,0 +1,8 @@
+.badge {
+    text-align: center;
+    height: 1.6em;
+    word-wrap: break-word;
+    width: 12em;
+    background: rgb(34, 34, 90);
+    background-blend-mode: overlay, hard-light, normal;
+}
