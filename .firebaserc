@@ -1,14 +1,5 @@
 {
-  "targets": {
-    "birthdayempire": {
-      "hosting": {
-        "birthdayempire": [
-          "birthdayempire"
-        ]
-      }
-    }
-  },
   "projects": {
-    "default": "birthdayempire"
+    "default": "justforhosting-8bbba"
   }
 }

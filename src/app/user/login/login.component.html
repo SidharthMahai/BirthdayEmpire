@@ -5,9 +5,10 @@
       <h2 class="card-title" style="text-align: center;">Login</h2>
       <h6 class="card-subtitle mb-2 text-muted" style="text-align: center;">
         <span *ngIf="user">You have been authenticated. Please continue to use our services.</span>
-        <span *ngIf="!user">Login using your Google Account or Phone Number</span>
+        <span *ngIf="!user">Login with your Google Account or Phone Number</span>
       </h6>
       <div class="card-text">
+        <br>
         <firebase-ui></firebase-ui>
       </div>
     </div>
