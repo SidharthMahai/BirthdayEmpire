@@ -12,7 +12,7 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class BirthdayService {
-url: string = "https://script.google.com/macros/s/AKfycbxzWF9G5UFda1zBXsSJ_fwcVSAXMgii7k-ozmWWqAnnOdLCvmj9NtKopJBMelTV4D5x/exec";
+url: string = "https://script.google.com/macros/s/AKfycbzrhkEtmK0BSGgjPG_7JAIs2ptQ5XalZC_wHfOvg3IAOeQ4hKC667XLNnSTiWQKC862/exec";
   constructor(public fireservices: AngularFirestore, public  router:  Router, private http:HttpClient) { 
     
   }
@@ -28,42 +28,33 @@ getRandomId()
 }
 
 
-addBirthday(Record)
+addBirthday(name,day,month,year,relation,uid,bid)
 {
-alert("Birthday Added Successfully");
-this.router.navigate(['viewbirthdays']);
-return this.fireservices.collection('Birthdays').add(Record);
-
+  return this.http.get<any>(this.url+"?action=addBirthday&uid="+uid + "&name="+name+ "&day="+day+ "&month="+month+ "&year="+year+"&relation="+relation + "&bid="+bid);
 }
 
 
-updateBirthday(Record, docid)
+updateBirthday(name,day,month,year,relation,uid,bid)
 {
-if(window.confirm('Are sure you want to update this birthday ?')){
-alert("Birthday Updated Successfully");
-this.router.navigate(['viewbirthdays']);
-return this.fireservices.doc('Birthdays/' + docid).update(Record);
-}
+  return this.http.get<any>(this.url+"?action=updateBirthday&uid="+uid + "&name="+name+ "&day="+day+ "&month="+month+ "&year="+year+"&relation="+relation + "&bid="+bid);
 }
 
 
-deleteBirthday(docid)
+deleteBirthday(bid)
 {
 if(window.confirm('Are sure you want to delete this birthday ?')){
-alert("Birthday Deleted Successfully");
-this.router.navigate(['viewbirthdays']);
-return this.fireservices.doc('Birthdays/' + docid).delete();
+  alert("Birthday Deleted Successfully");
+  this.router.navigate(['viewbirthdays']);
+  return this.http.get<any>(this.url+"?action=deleteBirthday&bid="+bid);
 }
 }
 
 
 
 
-getBirthday(docid)
+getBirthday(docid,uid)
 {
-
- return this.fireservices.doc('Birthdays/'+docid).valueChanges();
-
+  return this.http.get<any>(this.url+"?action=getBirthday&bid="+docid+"&uid="+uid);
 }
 
 

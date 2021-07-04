@@ -18,7 +18,7 @@ date = new Date();
 monthno:any;
 
 
-  constructor(private as: BirthdayService, public as1: AuthService) { }
+  constructor(private as: BirthdayService, public as1: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -54,7 +54,16 @@ birthday.age = this.as.calculateAge(birthday.year,birthday.month,birthday.day);
    });
   }
   
+  onDelete(birthday)                                                                                                                                                                                                 {
+    this.as.deleteBirthday(birthday.bid).subscribe(data => {
+    },
+    err => {
+    });
+    location.reload();
+    } 
 
-
-
+    onSelect(birthday)
+    {
+    this.router.navigate(['/viewbirthdays',birthday.bid]);
+    }
 }

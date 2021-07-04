@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 import { BirthdayService } from './../../../services/birthday.service';
@@ -22,7 +23,7 @@ birthdaysbyname: any;
 
 
 
-  constructor(private as: BirthdayService, public as1: AuthService) { }
+  constructor(private as: BirthdayService, public as1: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.as1.getUserState().subscribe( user => {
@@ -71,7 +72,16 @@ this.birthdaysbyname = this.birthdays;
 
 
 
+onDelete(birthday)                                                                                                                                                                                                 {
+  this.as.deleteBirthday(birthday.bid).subscribe(data => {
+  },
+  err => {
+  });
+  location.reload();
+  } 
 
-
-
+  onSelect(birthday)
+  {
+  this.router.navigate(['/viewbirthdays',birthday.bid]);
+  }
 }

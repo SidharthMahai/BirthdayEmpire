@@ -37,12 +37,13 @@ this.afAuth.authState.subscribe(user => {
 
 
 
-async logout(){
+logout(){
+
 if(window.confirm('Are sure you want to logout ?')){
-    await this.afAuth.signOut();
-    localStorage.removeItem('user');
+    this.afAuth.signOut().then(()=> {
     alert("Logout Successful"); 
     this.router.navigate(['home']);
+    });
 }
 }
 

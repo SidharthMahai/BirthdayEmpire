@@ -4,7 +4,7 @@ import { BirthdayService } from './../../services/birthday.service';
 import { RelationService } from './../../services/relation.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService } from './../../user/auth.service';
-
+import { Router } from  "@angular/router";
 
 @Component({
   selector: 'app-add',
@@ -14,7 +14,7 @@ import {AuthService } from './../../user/auth.service';
 export class AddComponent implements OnInit {
 name: string;
 birthday: NgbDateStruct;
-relation: string;
+relation: string ="--Choose Relation--";
 
 now = new Date();
 year = this.now.getFullYear();
@@ -23,7 +23,7 @@ day = this.now.getDate();
 id: string;
 user: any;
 relations: any;
-  constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService) { }
+  constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService,public  router:  Router) { }
 url: string;
   ngOnInit(): void {
 
@@ -42,16 +42,16 @@ this.user=user;
 
 addBirthday()
 {
-let record= {};
-record['name']=this.name.toLowerCase();
-record['day']=this.birthday.day;
-record['month']=this.birthday.month;
-record['year']=this.birthday.year;
-record['relation']=this.relation;
-record['uid']=this.user.uid;
-this.as.addBirthday(record);
+if(this.relation != "--Choose Relation--")
+{
+this.as.addBirthday(this.name,this.birthday.day,this.birthday.month,this.birthday.year,this.relation,this.user.uid, this.as.getRandomId()).subscribe(data => {
+},
+err => {
+});
+alert(this.name + "'s Birthday Added Successfully");
+this.router.navigate(['viewbirthdays']);
 }
-
+}
 
 
 

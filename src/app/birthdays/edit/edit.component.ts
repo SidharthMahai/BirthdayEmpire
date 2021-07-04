@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BirthdayService } from './../../services/birthday.service';
 import {NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 import {AuthService } from './../../user/auth.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
@@ -26,29 +26,27 @@ now = new Date();
 year = this.now.getFullYear();
 month = this.now.getMonth();
 day = this.now.getDate();
-  constructor( private router: ActivatedRoute, private fs: AngularFirestore, private as: BirthdayService,  private rs: RelationService) { }
+user: any;
+  constructor( private router: ActivatedRoute, public  router2:  Router,private fs: AngularFirestore, private rs: RelationService, private as: BirthdayService, public as1: AuthService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
 
-this.rs.getAllRelations().subscribe(data => {
-
-this.relations = data.map(e => {
-return {
-relation: e.payload.doc.data()['relation'],
-
-};
-})
-});
-
-
-let docid = this.router.snapshot.paramMap.get('id');
-this.id = docid;
-this.as.getBirthday(docid).subscribe(data => {
-
-      this.birthday = data;
- this.date= { year: this.birthday.year, month: this.birthday.month, day: this.birthday.day }
-
+    this.rs.getAllRelations().subscribe( data => {
+      this.relations = data;
     });
+    
+    this.as1.getUserState().subscribe( user => {
+      this.user=user;
+      let docid = this.router.snapshot.paramMap.get('id');
+this.id = docid;
+this.as.getBirthday(docid,this.user.uid).subscribe(data => {
+      this.birthday = data[0];
+ this.date= { year: this.birthday.year, month: this.birthday.month, day: this.birthday.day }
+    });
+      })
+      
+
+
 
 
 
@@ -61,13 +59,13 @@ this.as.getBirthday(docid).subscribe(data => {
 
 updateBirthday()
 {
-let record = { };
-record['name']=this.birthday.name;
-record['day']=this.date.day;
-record['month']=this.date.month;
-record['year']=this.date.year;
-record['relation']=this.birthday.relation;
-this.as.updateBirthday(record, this.id);
+  if(window.confirm("Are you sure you want to update this birthday?")) {
+this.as.updateBirthday(this.birthday.name,this.date.day,this.date.month,this.date.year,this.birthday.relation,this.user.uid,this.birthday.bid).subscribe(data => {
+
+});
+alert("Birthday Updated Successfully");
+this.router2.navigate(['viewbirthdays']);
+}
 }
 
 

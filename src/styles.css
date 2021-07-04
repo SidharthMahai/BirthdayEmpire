@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~firebaseui/dist/firebaseui.css';
 
-tr,td,th {
+tr,td,th,option, input {
     text-transform: capitalize;
+}
+
+a, .badge {    cursor: pointer;
 }

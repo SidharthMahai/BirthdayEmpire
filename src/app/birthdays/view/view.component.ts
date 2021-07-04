@@ -56,13 +56,17 @@ this.birthdays.forEach(birthday => {
 
 onSelect(birthday)
 {
-this.router.navigate(['/viewbirthdays',birthday.id]);
+this.router.navigate(['/viewbirthdays',birthday.bid]);
 }
 
 
 onDelete(birthday)                                                                                                                                                                                                 {
-this.as.deleteBirthday(birthday.id);
-}  
+  this.as.deleteBirthday(birthday.bid).subscribe(data => {
+  },
+  err => {
+  });
+  location.reload();
+  } 
 
 
 

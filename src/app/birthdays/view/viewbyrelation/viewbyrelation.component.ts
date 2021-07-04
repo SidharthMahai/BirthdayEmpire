@@ -17,7 +17,7 @@ relation: any;
 relations: any;
 loading:boolean = true;
 
-  constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService) { }
+  constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -61,7 +61,16 @@ this.loading = true;
 });
 
 }
+onDelete(birthday)                                                                                                                                                                                                 {
+  this.as.deleteBirthday(birthday.bid).subscribe(data => {
+  },
+  err => {
+  });
+  location.reload();
+  } 
 
-
-
+  onSelect(birthday)
+  {
+  this.router.navigate(['/viewbirthdays',birthday.bid]);
+  }
 }

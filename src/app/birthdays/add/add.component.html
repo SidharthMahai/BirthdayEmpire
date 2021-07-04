@@ -31,8 +31,8 @@
  <div class="form-group">
     <label>Relation to you</label>
     <select #_relation="ngModel" required [class.is-invalid]="_relation.invalid && _relation.touched" type="text" class="form-control" [(ngModel)]="relation" class="form-control form-row col-5" id="exampleFormControlSelect1">
-
-    <option *ngFor="let x of relations">{{x.relation}}</option>
+      <option>--Choose Relation--</option>
+    <option *ngFor="let x of relations">{{x.relation | titlecase}}</option>
    </select>
   </div>
  
@@ -40,6 +40,6 @@
  
 
 
-  <button type="submit" [disabled]=" _name.errors || _date.errors || _relation.errors" class="btn btn-primary" (click)="addBirthday()">Add</button>
+  <button type="submit" [disabled]=" _name.errors || _date.errors || _relation.errors" class="btn btn-primary" (click)="addBirthday()">Add Birthday</button>
 </div>                                                                                                                
 <router-outlet></router-outlet>
