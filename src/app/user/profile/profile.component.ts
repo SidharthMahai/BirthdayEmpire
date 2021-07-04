@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
 })
 export class ProfileComponent implements OnInit {
 
-user: firebase.User;
+user: any;
 
   constructor(private as: AuthService) { }
 

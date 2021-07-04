@@ -13,7 +13,7 @@ import * as moment from 'moment';
   styleUrls: ['./todaybirthdays.component.css']
 })
 export class TodaybirthdaysComponent implements OnInit {
-user: firebase.User;
+user: any;
 birthdays: any;
 date: any;
 

@@ -11,7 +11,7 @@ import { RelationService } from './../../../services/relation.service';
   styleUrls: ['./viewbyrelation.component.css']
 })
 export class ViewbyrelationComponent implements OnInit {
-user: firebase.User;
+user: any;
 birthdays: any;
 relation: any;
 relations: any;

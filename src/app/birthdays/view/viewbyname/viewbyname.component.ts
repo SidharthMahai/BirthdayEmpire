@@ -14,7 +14,7 @@ import {AuthService } from './../../../user/auth.service';
 export class ViewbynameComponent implements OnInit {
 name: any;
 
-user: firebase.User;
+user: any;
 birthdays: any;
 
 

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ViewbymonthComponent implements OnInit {
 month:any;
-user: firebase.User;
+user: any;
 birthdays: any;
 
 date = new Date();

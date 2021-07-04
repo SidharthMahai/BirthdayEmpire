@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { Router } from  "@angular/router";
+import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment';
 
 
@@ -11,8 +12,10 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class BirthdayService {
-
-  constructor(public fireservices: AngularFirestore, public  router:  Router) { }
+url: string;
+  constructor(public fireservices: AngularFirestore, public  router:  Router, private http:HttpClient) { 
+    
+  }
 
 
  monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
@@ -59,11 +62,18 @@ getBirthday(docid)
 }
 
 
-getAllBirthdays(uid)
+getAllBirthdays(uid): any
 {
+ return this.http.get<any>("https://script.google.com/macros/s/AKfycbx2kxLzg-6-p_eeoqbkjIvRieZfvRQ6MeRrKLdzB18zBMpYYX3Rc9y3fTgmkNwAv-G3/exec?action=getAllBirthdays&uid="+uid);
+}
 
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
-
+fetchUrl()
+{
+  this.http.get<any>('https://script.google.com/macros/s/AKfycbzuwB2_iF_XCyybklKaabtzWwmvdDstRDuxiEtJ60TYpPhF8pyTnQOL4Pj-pb4kHzM4/exec?action=getApiUrl&name=birthdayempire').subscribe(Data=>{
+    this.url = Data[0].url;
+    console.log(this.url);
+  });
+  return this.url;
 }
 
 

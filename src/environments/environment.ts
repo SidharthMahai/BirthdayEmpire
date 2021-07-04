@@ -5,13 +5,12 @@
 export const environment = {
   production: true,
 firebase: {
-apiKey: "AIzaSyAVjn5cDvVGVMNJVtE5LPxTf-q84zgWWdg",
-    authDomain: "birthdayempire.firebaseapp.com",
-    databaseURL: "https://birthdayempire.firebaseio.com",
-    projectId: "birthdayempire",
-    storageBucket: "birthdayempire.appspot.com",
-    messagingSenderId: "316575077701",
-    appId: "1:316575077701:web:d11ae1034c561e38605a2c"
+  apiKey: "AIzaSyDw_Ud1g-sJNV5n_yVEB7nVvm-ufirdRjk",
+  authDomain: "justforhosting-8bbba.firebaseapp.com",
+  projectId: "justforhosting-8bbba",
+  storageBucket: "justforhosting-8bbba.appspot.com",
+  messagingSenderId: "611397092064",
+  appId: "1:611397092064:web:000262967a69e93ea38685"
 }
 
 

@@ -1,7 +1,7 @@
+import { AboutComponent } from './about/about.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ViewbynameComponent } from './birthdays/view/viewbyname/viewbyname.component';
-import { RegisterComponent} from './user/register/register.component';
 import { HomeComponent} from './home/home.component';
 import { ProfileComponent} from './user/profile/profile.component';
 import { AddComponent } from './birthdays/add/add.component';
@@ -14,9 +14,8 @@ import {ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyre
 
 
 const routes: Routes = [
-{path: '', redirectTo: '/about', pathMatch: 'full'},
-{path : 'register', component: RegisterComponent},
-{path : 'about', component: HomeComponent},
+{path: '', redirectTo: '/home', pathMatch: 'full'},
+{path : 'home', component: HomeComponent},
 {path : 'login', component: LoginComponent},
 {path : 'profile', component: ProfileComponent},
 {path : 'viewbirthdays', component: ViewComponent},
@@ -25,7 +24,8 @@ const routes: Routes = [
 {path : 'viewbyname',component: ViewbynameComponent },
 {path : 'viewbyrelation',component: ViewbyrelationComponent },
 {path : 'todaybirthdays',component: TodaybirthdaysComponent },
-{path : 'addbirthday', component: AddComponent}
+{path : 'addbirthday', component: AddComponent},
+{path : 'about', component: AboutComponent}
 ];
 
 @NgModule({

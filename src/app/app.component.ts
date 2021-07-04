@@ -13,7 +13,7 @@ import {AuthService} from './user/auth.service';
 export class AppComponent {
   title = 'Birthday Empire';
 
-user: firebase.User;
+user: any;
 
 
 constructor(private as: AuthService)

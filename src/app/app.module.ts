@@ -1,21 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegisterComponent } from './user/register/register.component';
 import { LoginComponent } from './user/login/login.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { AngularFireAuthModule } from "@angular/fire/auth";
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { environment } from '../environments/environment';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HomeComponent } from './home/home.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SidebarComponent } from './navs/sidebar/sidebar.component';
-import { NavbarComponent } from './navs/navbar/navbar.component';
 import { AddComponent } from './birthdays/add/add.component';
 import { ViewComponent } from './birthdays/view/view.component';
 import { ViewbymonthComponent } from './birthdays/view/viewbymonth/viewbymonth.component';
@@ -25,20 +16,37 @@ import { DeleteComponent } from './birthdays/delete/delete.component';
 import { OptionsComponent } from './birthdays/view/options/options.component';
 import { ViewbynameComponent } from './birthdays/view/viewbyname/viewbyname.component';
 import { ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyrelation.component';
+import { AboutComponent } from './about/about.component';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFireAuthModule, USE_EMULATOR as USE_AUTH_EMULATOR} from '@angular/fire/auth';
+import {firebase, firebaseui, FirebaseUIModule} from 'firebaseui-angular';
+import {environment} from '../environments/environment';
+import { HttpClientModule } from '@angular/common/http';
+
+const firebaseUiAuthConfig: firebaseui.auth.Config = {
+  signInFlow: 'popup',
+  signInOptions: [
+    {
+      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID
+    },
+    {
+    provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
+    defaultCountry: 'IN'
+    },
+  ],
+  credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
+};
 
 
 
 
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
-    RegisterComponent,
     LoginComponent,
     ProfileComponent,
     HomeComponent,
-    SidebarComponent,
-    NavbarComponent,
     AddComponent,
     ViewComponent,
     ViewbymonthComponent,
@@ -48,21 +56,19 @@ import { ViewbyrelationComponent } from './birthdays/view/viewbyrelation/viewbyr
     OptionsComponent,
     ViewbynameComponent,
     ViewbyrelationComponent,
-  ],
+      AboutComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
 FormsModule,
 ReactiveFormsModule,
-AngularFireAuthModule,
+NgbModule,
+HttpClientModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFirestoreModule,
-    NgbModule,
-AngularFireFunctionsModule
-
-
+    AngularFireAuthModule,
+    FirebaseUIModule.forRoot(firebaseUiAuthConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
