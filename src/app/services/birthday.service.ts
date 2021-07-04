@@ -12,7 +12,7 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class BirthdayService {
-url: string = "https://script.google.com/macros/s/AKfycbzZkqsYH1UH4dO9XRQt22_JhWq7dK69g8G_Lao4PZfSorZiLiurDaOAx1J0ATG1XpDi/exec";
+url: string = "https://script.google.com/macros/s/AKfycbxzWF9G5UFda1zBXsSJ_fwcVSAXMgii7k-ozmWWqAnnOdLCvmj9NtKopJBMelTV4D5x/exec";
   constructor(public fireservices: AngularFirestore, public  router:  Router, private http:HttpClient) { 
     
   }
@@ -21,6 +21,11 @@ url: string = "https://script.google.com/macros/s/AKfycbzZkqsYH1UH4dO9XRQt22_JhW
  monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
 
 
+
+getRandomId()
+{
+  return Math.random().toString(36).substr(2, 7);
+}
 
 
 addBirthday(Record)
@@ -81,28 +86,13 @@ getBirthdaysByRelation(uid,relation)
 {
 if(relation == "Choose Relation")
 {
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
+return this.getAllBirthdays(uid);
 }
 else
 {
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).where('relation', '==', relation).orderBy('month').orderBy('day')).snapshotChanges();
+  return this.http.get<any>(this.url+"?action=getBirthdaysByRelation&uid="+uid+"&relation="+relation.toLowerCase());
 }
 }
-
-getBirthdaysByName(uid,name)
-{
-if(name == "")
-{
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('month').orderBy('day')).snapshotChanges();
-}
-else
-{
-name = name.toLowerCase();
-return this.fireservices.collection('Birthdays', ref => ref.where('uid', '==', uid).orderBy('name').startAt(name).endAt(name + '\uf8ff')).snapshotChanges();
-}
-}
-
-
 
 
 birthdayToday(m,d)

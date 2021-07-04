@@ -1,16 +1,13 @@
-<br>
+<br><br>
 <div class="container">
-
-
-<br>
+<notfound *ngIf="!loading && !birthdays"></notfound>
 <h2>View by Name</h2>
 <options></options>
 <br>
 <br>
 
  <div class="form-group">
- <label>Name of the person</label>
-    <input required  (keyup)="getBirthdays()" type="text" class="form-control" [(ngModel)]="name">
+    <input placeholder="Filter out birthdays using name" [disabled]="loading" required  (keyup)="getBirthdays()" type="text" class="form-control" [(ngModel)]="name">
   </div>
 
 <table class="table table-striped">
@@ -24,8 +21,8 @@
     <th scope="col">Actions</th>
   </tr>
   </thead>
-  <tbody>
-  <tr  [ngClass]="{'table-success' : b.birthdaytoday}"   *ngFor="let b of birthdays; index as i">
+  <tbody *ngIf="birthdays && !loading">
+  <tr  [ngClass]="{'table-success' : b.birthdaytoday}"   *ngFor="let b of birthdaysbyname; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
   
@@ -37,6 +34,7 @@
     <td><span (click)="onSelect(b)" class="badge badge-primary">Edit</span>&nbsp;<span (click)="onDelete(b)" class="badge badge-danger">Delete</span></td>
   </tr>
   </tbody>
+  <loader *ngIf="loading"></loader>
 </table>
 
 

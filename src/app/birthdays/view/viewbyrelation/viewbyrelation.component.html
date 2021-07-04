@@ -1,7 +1,7 @@
 <br><br>
 <div class="container">
 
-
+<notfound *ngIf="!loading && !birthdays"></notfound>
 <h2>View by Relation</h2>
 <options></options>
 <br>
@@ -10,7 +10,7 @@
 
  <div class="form-group">
     <label>Relation to you</label>
-    <select type="text" (click)="getBirthdays()" class="form-control" [(ngModel)]="relation" class="form-control form-row col-5" id="exampleFormControlSelect1">
+    <select [disabled]="loading" type="text" (change)="getBirthdays()" class="form-control" [(ngModel)]="relation" class="form-control form-row col-5" id="exampleFormControlSelect1">
 <option>Choose Relation</option>    
 <option *ngFor="let x of relations">{{x.relation}}</option>
    </select>
@@ -28,7 +28,7 @@
     <th scope="col">Actions</th>
   </tr>
   </thead>
-  <tbody>
+  <tbody *ngIf="!loading && birthdays">
   <tr  [ngClass]="{'table-success' : b.birthdaytoday}"   *ngFor="let b of birthdays; index as i">
     <th scope="row">{{ i + 1 }}</th>
     <td>
@@ -41,6 +41,7 @@
     <td><span (click)="onSelect(b)" class="badge badge-primary">Edit</span>&nbsp;<span (click)="onDelete(b)" class="badge badge-danger">Delete</span></td>
   </tr>
   </tbody>
+  <loader *ngIf="loading"></loader>
 </table>
 
 

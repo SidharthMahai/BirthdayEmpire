@@ -15,6 +15,7 @@ user: any;
 birthdays: any;
 relation: any;
 relations: any;
+loading:boolean = true;
 
   constructor(private rs: RelationService, private as: BirthdayService, public as1: AuthService) { }
 
@@ -22,13 +23,7 @@ relations: any;
 
 
 this.rs.getAllRelations().subscribe( data => {
-this.relations = data.map(e => {
-        return {
-
-relation: e.payload.doc.data()['relation'],
-
-};
-})
+  this.relations = data;
 });
 
 
@@ -47,19 +42,22 @@ this.getBirthdays();
 
 getBirthdays()
 {
-
+this.loading = true;
    this.as.getBirthdaysByRelation(this.user.uid,this.relation).subscribe(data => {
-                                                                                                                                                                                                                         
-this.birthdays = data.map(e => {                                                                                                                                                                                     
-return {                                                                                                                                                                                                             
-id: e.payload.doc.id,                                                                                                                                                                                              
-name: e.payload.doc.data()['name'],                                                                                                                                                                                
-relation: e.payload.doc.data()['relation'],                                                                                                                                                                        
-date: this.as.formatDate(e.payload.doc.data()['day'],e.payload.doc.data()['month'],e.payload.doc.data()['year']),                                                                                                  
-birthdaytoday: this.as.birthdayToday(e.payload.doc.data()['month'],e.payload.doc.data()['day']),                                                                                                          
-age: this.as.calculateAge(e.payload.doc.data()['year'],e.payload.doc.data()['month'],e.payload.doc.data()['day']),                                                             
-};                                                                                                                                                              
-})                                                                                                                                                                       
+                                                                                                                                                                                 
+  this.birthdays = data;
+  this.loading = false;
+  if(data[0].error) {
+    this.birthdays = null;
+  }
+  else {
+  this.birthdays.forEach(birthday => {
+    birthday.date = this.as.formatDate(birthday.day,birthday.month,birthday.year);
+    birthday.birthdaytoday = this.as.birthdayToday(birthday.month, birthday.day);
+    birthday.age = this.as.calculateAge(birthday.year,birthday.month,birthday.day);
+  });
+  }                                                                                                                                                             
+                                                                                                                                                                      
 });
 
 }

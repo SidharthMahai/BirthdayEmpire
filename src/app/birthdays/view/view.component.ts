@@ -16,7 +16,9 @@ user: any;
 birthdays: any;
 loading: boolean = true;
 
-  constructor(private router: Router, private as: BirthdayService, public as1: AuthService) { }
+  constructor(private router: Router, private as: BirthdayService, public as1: AuthService) { 
+
+  }
 
   ngOnInit(): void {
 this.as1.getUserState().subscribe( user => {
