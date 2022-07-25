@@ -12,7 +12,7 @@ import * as moment from 'moment';
   providedIn: 'root'
 })
 export class BirthdayService {
-url: string = "https://script.google.com/macros/s/AKfycbzrhkEtmK0BSGgjPG_7JAIs2ptQ5XalZC_wHfOvg3IAOeQ4hKC667XLNnSTiWQKC862/exec";
+url: string = "https://script.google.com/macros/s/AKfycbzczj5Ac-U2jntLc5Fd89hqnD92_9jfZDzzMQ08DQgbGqdCBosgN63kiHyRY_2wIFJD/exec";
   constructor(public fireservices: AngularFirestore, public  router:  Router, private http:HttpClient) { 
     
   }
